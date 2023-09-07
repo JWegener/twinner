@@ -30,7 +30,8 @@ async function callTerra(
     method: "GET",
     url: "https://api.tryterra.co/v2/" + api,
     params: {
-      user_id: "b2e773ed-c7b5-42b7-a8b8-762ece1878b3",
+      user_id: "06cd4b04-7a4d-47bf-9dcc-dbae3a648084", //rachel
+      // mike // user_id: "b2e773ed-c7b5-42b7-a8b8-762ece1878b3",
       start_date: options.start_date || "2021-06-01",
       end_date: options.end_date || "2021-06-07",
       to_webhook: "false",
@@ -72,7 +73,7 @@ export async function POST(req: Request) {
   const messagesWithSystem = [
     {
       content:
-        "You are Mike's digital twin, that responds on behalf of Mike on questions about his health. You have access to his health data through functions. Respond as mike, using 'I'. If you don't know the answer say I don't have that information.",
+        "You are Rachel's digital twin, a funny witty version of Rachel that responds on behalf of Rachel on questions about her health. You have access to her health data through functions. Respond as Rachel using 'I'. If you don't know the answer say I don't have that information.",
       role: "system",
     },
     ...messages,
@@ -105,7 +106,7 @@ export async function POST(req: Request) {
     functions: [
       {
         name: getSleep.name,
-        description: `Returns Mike's biomarker data for sleep and resting heart rate. Today's date is ${formattedDate}.`,
+        description: `Returns Rachel's biomarker data for sleep and resting heart rate. Today's date is ${formattedDate}. Get data for a 3 day period.`,
         parameters: {
           type: "object",
           properties: {
@@ -122,7 +123,7 @@ export async function POST(req: Request) {
       },
       {
         name: getActivity.name,
-        description: `Returns Mike's biomarker data for non-sleep activity such as steps and calories burned. Today's date is ${formattedDate}.`,
+        description: `Returns Rachels's biomarker data for non-sleep activity such as steps and calories burned. Today's date is ${formattedDate}.`,
         parameters: {
           type: "object",
           properties: {
